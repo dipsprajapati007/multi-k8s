@@ -6,7 +6,7 @@ before_insatll:
   - docker build -t dipsprajapati/react-test -f ./client/Dockerfile.dev .
 
 script:
-  - docker run -e CI=true dipsprajapati/react-test npm test
+  - docker run -e CI=true dipsprajapati/react-test npm run test
 
 after_success:
   #Build prod images
