@@ -2,7 +2,7 @@ sudo: required
 
 services: docker
 
-before_insatll:
+before_install:
   - docker build -t dipsprajapati/react-test -f ./client/Dockerfile.dev .
 
 script:
