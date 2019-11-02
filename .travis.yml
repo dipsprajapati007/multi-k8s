@@ -1,0 +1,23 @@
+sudo: required
+
+services: docker
+
+before_insatll:
+  - docker build -t dipsprajapati/react-test -f ./client/Dockerfile.dev .
+
+script:
+  - docker run dipsprajapati/react-test npm test -- --coverge
+
+after_success:
+  #Build prod images
+  - docker build -t dipsprajapati/multi-client ./client
+  - docker build -t dipsprajapati/multi-nginx ./nginx 
+  - docker build -t dipsprajapati/multi-server ./server 
+  - docker build -t dipsprajapati/multi-worker ./worker
+  #Login to docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  # Take those images and push it to dockerhub
+  - docker push dipsprajapati/multi-client
+  - docker push dipsprajapati/multi-nginx
+  - docker push dipsprajapati/multi-worker
+  - docker push dipsprajapati/multi-server
