@@ -1,5 +1,5 @@
 docker build -t dipsprajapati/multi-client:latest -t dipsprajapati/multi-client:$SHA -f ./client/Dockerfile ./client
-docker build -t dipsprajapati/multi-server:latest -t dipsprajapati/multi-server:$SHA -f ./servet/Dockerfile ./server
+docker build -t dipsprajapati/multi-server:latest -t dipsprajapati/multi-server:$SHA -f ./server/Dockerfile ./server
 docker build -t dipsprajapati/multi-worker:latest -t dipsprajapati/multi-worker:$SHA -f ./worker/Dockerfile ./worker
 
 docker push dipsprajapati/multi-client:latest
