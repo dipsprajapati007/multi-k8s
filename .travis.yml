@@ -7,7 +7,7 @@ env:
     - CLOUDSDK_CORE_DISABLE_PROMPS=1
 before_install:
   #first two will download and install google cloud sdk
-  - curl https://sdk.clod.google.com | bash > /dev/null
+  - curl https://sdk.clod.google.com | bash > /dev/null;
   - source $HOME/google-cloud-sdk/path.bash.inc
   - gcloud component update kubectl #will install kubectl command line tool
   - gcloud auth activate-service-account --key-file service-account.json #service account to authticate
